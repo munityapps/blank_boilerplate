@@ -3,6 +3,7 @@
 
 ## Start munity, the easy way
 ```
+cp ./env.sample ./.env
 ./start.sh
 ```
 
