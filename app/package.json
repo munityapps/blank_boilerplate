@@ -27,7 +27,7 @@
         ]
     },
     "dependencies": {
-        "munityapps": "^0.1"
+        "munityapps": "^0.1.46"
     },
     "devDependencies": {
         "@babel/core": "^7.15.8",

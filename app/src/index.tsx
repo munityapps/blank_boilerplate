@@ -1,25 +1,51 @@
 // Libs
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Route } from 'react-router';
 
 // Component
-import MunityProviders from 'munityapps/providers';
-import Router from 'munityapps/router';
+import MunityApp from 'munityapps/app';
+import Navbar from 'munityapps/workspaces/components/Navbar';
+import NavbarLeft from 'munityapps/workspaces/components/NavbarComponents/NavbarLeft';
+import NavbarCenter from 'munityapps/workspaces/components/NavbarComponents/NavbarCenter';
+import NavbarRight from 'munityapps/workspaces/components/NavbarComponents/NavbarRight';
+import LoadingMunity from 'munityapps/layouts/components/LoadingMunity';
 
 // Configuration
 import reportWebVitals from './reportWebVitals';
 
+// Boilerplate
+import { Provider as ReduxProvider } from 'react-redux';
+import MunityProviders from 'munityapps/providers';
+
 // Style
 import 'munityapps/styles.scss';
 
+import store from './store';
+
 ReactDOM.render(
-    <MunityProviders>
-        <React.StrictMode>
-            <Router>
-		{ /* Your route here... */ }
-            </Router>
-        </React.StrictMode>
-    </MunityProviders>,
+    <ReduxProvider store={store}>
+        <MunityProviders>
+            <React.StrictMode>
+                <MunityApp
+                    workspaceNavbar={<Navbar
+                        leftPart={NavbarLeft}
+                        centerPart={NavbarCenter}
+                        rightPart={NavbarRight}
+                    />}
+                    newOvermindRoutes={[
+                        <Route key={'foobar'} path="/foobar" component={() => <>OVERMIND FOOBAR</>} />
+                    ]}
+                    newWorkspaceRoutes={[
+                        <Route key={'foobar'} path="/foobar" component={() => <>WORKSPACE FOOBAR</>} />
+                    ]}
+                    loadingWorkspace={LoadingMunity}
+                >
+                    <Route key={'foobar'} path="/foobar" component={() => <>FOOBAR</>} />
+                </MunityApp>
+            </React.StrictMode>
+        </MunityProviders>
+    </ReduxProvider >,
     document.getElementById('root')
 );
 

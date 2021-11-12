@@ -1,13 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
 
-import appReducer from 'munityapps/app/slice';
-import { userSlice } from 'munityapps/user/slice';
-import permissionSlice from 'munityapps/permissions/slice';
-import { workspaceSlice } from 'munityapps/workspaces/slice';
-import authenticationSlice from 'munityapps/authentication/slice';
-import notificationSlice from 'munityapps/notifications/slice';
-import { settingSlice } from 'munityapps/settings/slice';
-
 import { munityMiddleware, munityReducer } from 'munityapps/store';
 
 
