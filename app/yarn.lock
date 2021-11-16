@@ -7725,10 +7725,10 @@ multicast-dns@^6.0.1:
     dns-packet "^1.3.1"
     thunky "^1.0.2"
 
-munityapps@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/munityapps/-/munityapps-0.2.0.tgz#e3193f6846ba01c79b5e247ca5cb17702e53cedf"
-  integrity sha512-9wl/G+qGRGyDaXmQBzIsAHeVpGlBGv5OMRtDIvj8X5fGYWQKxXFw8tb5j5JZbEI5ehigOhkt5AZm8vtWw6tY/w==
+munityapps@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/munityapps/-/munityapps-0.2.1.tgz#c7e7c44b10bee0dad932c31cfbbc6dbbedb1adcd"
+  integrity sha512-5IfOLD8HYmr+z9bvfNZ2zt2miygA4/2TJ6jC3MTOWoPhVh6YAvugzxlxfHx7g1WX8EaKbjpya9zcWYdqSW/nNQ==
   dependencies:
     "@fortawesome/fontawesome-svg-core" "^1.2.36"
     "@fortawesome/free-brands-svg-icons" "^5.15.4"

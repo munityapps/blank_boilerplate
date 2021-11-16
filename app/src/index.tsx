@@ -17,6 +17,7 @@ import reportWebVitals from './reportWebVitals';
 // Boilerplate
 import { Provider as ReduxProvider } from 'react-redux';
 import MunityProviders from 'munityapps/providers';
+import OvermindSidebar from 'munityapps/overmind/components/Sidebar';
 
 // Style
 import 'munityapps/styles.scss';
@@ -33,6 +34,7 @@ ReactDOM.render(
                         centerPart={NavbarCenter}
                         rightPart={NavbarRight}
                     />}
+                    overmindSidebar={<OvermindSidebar />}
                     newOvermindRoutes={[
                         <Route key={'foobar'} path="/foobar" component={() => <>OVERMIND FOOBAR</>} />
                     ]}
