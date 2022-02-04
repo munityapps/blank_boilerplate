@@ -1,7 +1,6 @@
 // Libs
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Route } from 'react-router';
 
 // Component
 import MunityApp from 'munityapps/app';
@@ -10,6 +9,10 @@ import NavbarLeft from 'munityapps/workspaces/components/NavbarComponents/Navbar
 import NavbarCenter from 'munityapps/workspaces/components/NavbarComponents/NavbarCenter';
 import NavbarRight from 'munityapps/workspaces/components/NavbarComponents/NavbarRight';
 import LoadingMunity from 'munityapps/layouts/components/LoadingMunity';
+import OvermindSidebar from 'munityapps/overmind/components/Sidebar';
+import OvermindNavbar from 'munityapps/overmind/components/Navbar';
+import OvermindNavbarLeft from 'munityapps/overmind/components/NavbarComponents/NavbarLeft';
+import OvermindNavbarRight from 'munityapps/overmind/components/NavbarComponents/NavbarRight';
 
 // Configuration
 import reportWebVitals from './reportWebVitals';
@@ -17,7 +20,7 @@ import reportWebVitals from './reportWebVitals';
 // Boilerplate
 import { Provider as ReduxProvider } from 'react-redux';
 import MunityProviders from 'munityapps/providers';
-import OvermindSidebar from 'munityapps/overmind/components/Sidebar';
+import logo from 'munityapps/assets/logo.png';
 
 // Style
 import 'munityapps/styles.scss';
@@ -29,6 +32,12 @@ ReactDOM.render(
         <MunityProviders>
             <React.StrictMode>
                 <MunityApp
+                    logoLogin={logo}
+                    overmindNavbar={<OvermindNavbar
+                        leftPart={OvermindNavbarLeft}
+                        centerPart={NavbarCenter}
+                        rightPart={OvermindNavbarRight}
+                    />}
                     workspaceNavbar={<Navbar
                         leftPart={NavbarLeft}
                         centerPart={NavbarCenter}
@@ -36,14 +45,11 @@ ReactDOM.render(
                     />}
                     overmindSidebar={<OvermindSidebar />}
                     newOvermindRoutes={[
-                        <Route key={'foobar'} path="/foobar" component={() => <>OVERMIND FOOBAR</>} />
                     ]}
                     newWorkspaceRoutes={[
-                        <Route key={'foobar'} path="/foobar" component={() => <>WORKSPACE FOOBAR</>} />
                     ]}
                     loadingWorkspace={LoadingMunity}
                 >
-                    <Route key={'foobar'} path="/foobar" component={() => <>FOOBAR</>} />
                 </MunityApp>
             </React.StrictMode>
         </MunityProviders>
