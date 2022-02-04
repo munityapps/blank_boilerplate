@@ -62,7 +62,8 @@ INSTALLED_APPS = [
     "munity.authorization",
     "munity.records",
     "munity.settings",
-    # "munity.authentication",
+    "munity.files",
+    "munity.authenticate",
     # App
 ]
 
@@ -164,6 +165,7 @@ SIMPLE_JWT = {
     ),
     "AUTH_HEADER_TYPES": ("JWT", "Bearer"),
     "USER_ID_FIELD": "id",
+    "ROTATE_REFRESH_TOKENS": True,
 }
 
 
@@ -185,6 +187,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = "/static/"
+STATIC_ROOT = "./static"
+MEDIA_URL = "/uploads/"
+MEDIA_ROOT = "./uploads"
 # STATIC_ROOT = "./static"
 
 # Default primary key field type
@@ -193,3 +198,9 @@ STATIC_URL = "/static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = "users.User"
+
+
+FILE_UPLOAD_HANDLER = [
+    "django.core.files.uploadhandler.MemoryFileUploadHandler",
+    "django.core.files.uploadhandler.TemporaryFileUploadHandler"
+]

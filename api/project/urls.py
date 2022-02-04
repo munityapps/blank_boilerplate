@@ -56,11 +56,11 @@ docUrls = [
 ]
 
 apiUrls = [
+    path("", include(docUrls)),
     path("", include(overmind_router.urls)),
     path("", include(workspace_router.urls)),
     path("auth/", include("djoser.urls")),
     path("auth/", include("djoser.urls.jwt")),
-    path("", include(docUrls)),
 ]
 
 urlpatterns = [
