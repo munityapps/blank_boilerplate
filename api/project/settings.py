@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django_celery_beat",
     # Libs
     "rest_framework",
     "rest_framework.authtoken",
@@ -174,13 +175,32 @@ SIMPLE_JWT = {
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
-
 USE_I18N = True
 
 USE_L10N = True
 
 USE_TZ = True
+
+
+REDIS_HOST = env.str("REDIS_HOST", default="redis")
+REDIS_PORT = env.str("REDIS_PORT", default="6379")
+TIME_ZONE = env.str("TIME_ZONE", "UTC")
+
+# Celery configuration
+# http://docs.celeryproject.org/en/v4.0.2/userguide/configuration.html
+CELERY_BROKER_URL = f"redis://{REDIS_HOST}:{REDIS_PORT}/0"
+
+# https://docs.celeryproject.org/en/latest/getting-started/first-steps-with-celery.html#keeping-results
+CELERY_RESULT_BACKEND = f"redis://{REDIS_HOST}:{REDIS_PORT}/1"
+CELERY_ACCEPT_CONTENT = ["application/json"]
+CELERY_RESULT_SERIALIZER = "json"
+CELERY_TASK_SERIALIZER = "json"
+CELERY_TIMEZONE = TIME_ZONE
+
+# Only add *args if your function contains arguments; otherwise remove 'args': (*args) line. And for more information, read this doc: https://docs.celeryproject.org/en/latest/django/first-steps-with-django.html
+CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers:DatabaseScheduler"
+CELERY_BEAT_SCHEDULE = {}
+
 
 
 # Static files (CSS, JavaScript, Images)
