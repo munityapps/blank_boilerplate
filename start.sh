@@ -8,11 +8,10 @@ docker-compose up -d
 
 ### Create your database and migrate
 sleep 3;
-docker-compose exec db psql -U munityapps -c "create database munity"
 docker-compose exec api python manage.py migrate
-docker-compose restart api
 
 ### Create your first user
+docker-compose exec api python manage.py initiate_default_authorization
 docker-compose exec api python manage.py createsuperuser
 
 ### Start frontend
